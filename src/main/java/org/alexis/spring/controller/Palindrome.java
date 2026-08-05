@@ -3,7 +3,11 @@ package org.alexis.spring.controller;
 public class Palindrome {
 
     public String palindrome(String str) {
-        return "";
+        if(checkPalindrome(str)) {
+            return "La palabra " + str + " es un palindrome";
+        } else {
+            return "la palabra " + str + " NO es un palindrome";
+        }
     }
 
     private boolean checkPalindrome(String str) {
