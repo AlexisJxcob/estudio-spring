@@ -23,9 +23,9 @@ public class Controller {
         return "Hola mundo desde Spring" + nombre + " tu edad es: " + edad;
     }
 
-
-    @GetMapping("/detalles_info")
+    @GetMapping({"/detalles", "/detalle,","/deta", "/de"}) // podemos asignar distintos get para las urls
     public String info () {
+        System.out.println("Solicitud ejecutada");
         return "detalles_info"; // metodos handle
     }
 }
