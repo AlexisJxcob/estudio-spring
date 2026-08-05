@@ -22,4 +22,10 @@ public class Controller {
     public String holaMundoNombre(@PathVariable String nombre,@PathVariable int edad) {
         return "Hola mundo desde Spring" + nombre + " tu edad es: " + edad;
     }
+
+
+    @GetMapping("/detalles_info")
+    public String info () {
+        return "detalles_info"; // metodos handle
+    }
 }
