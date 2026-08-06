@@ -1,4 +1,4 @@
-package org.alexis.spring.controller;
+package org.alexis.spring.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,12 +19,12 @@ public class Controller {
     }
 
     @GetMapping("/holanombre/{nombre}/{edad}")
-    public String holaMundoNombre(@PathVariable String nombre,@PathVariable int edad) {
+    public String holaMundoNombre(@PathVariable String nombre, @PathVariable int edad) {
         return "Hola mundo desde Spring" + nombre + " tu edad es: " + edad;
     }
 
-    @GetMapping({"/detalles", "/detalle,","/deta", "/de"}) // podemos asignar distintos get para las urls
-    public String info () {
+    @GetMapping({"/detalles", "/detalle,", "/deta", "/de"}) // podemos asignar distintos get para las urls
+    public String info() {
         System.out.println("Solicitud ejecutada");
         return "detalles_info"; // metodos handle
     }
