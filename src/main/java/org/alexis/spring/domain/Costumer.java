@@ -7,4 +7,13 @@ public class Costumer {
     private String name;
     private String username;
     private String password;
+
+    // Constructor
+    public Costumer(Integer id, String name, String username, String password) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
+
 }
