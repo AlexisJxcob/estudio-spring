@@ -37,4 +37,17 @@ public class CostumerRestController {
         return c;
     }
 
+    public Costumer putCostumer(Costumer c) {
+        for (Costumer costumer : costumers) {
+            if (costumer.getId() == c.getId()) {
+                c.setName(costumer.getName());
+                c.setUsername(costumer.getUsername());
+                c.setPassword(costumer.getPassword());
+
+                return costumer;
+            }
+        }
+        return null;
+    }
+
 }
