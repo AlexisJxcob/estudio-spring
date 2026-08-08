@@ -39,15 +39,18 @@ public class CostumerRestController {
 
     @PutMapping("/clientes")
     public Costumer putCostumer(@RequestBody Costumer c) {
-        for (Costumer costumer : costumers) {
-            if (costumer.getId() == c.getId()) {
-                c.setName(c.getName());
-                c.setUsername(c.getUsername());
-                c.setPassword(c.getPassword());
+        System.out.println("ID recibido: " + c.getId()); // Verifica que el ID no llegue en null
 
+        for (Costumer costumer : costumers) {
+            if (costumer.getId().equals(c.getId())) {
+                System.out.println("¡Cliente encontrado! Actualizando...");
+                costumer.setName(c.getName());
+                costumer.setUsername(c.getUsername());
+                costumer.setPassword(c.getPassword());
                 return costumer;
             }
         }
+        System.out.println("No se encontró ningún cliente con ese ID.");
         return null;
     }
 
