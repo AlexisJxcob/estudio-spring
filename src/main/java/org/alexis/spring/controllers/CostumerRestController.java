@@ -41,16 +41,15 @@ public class CostumerRestController {
     public Costumer putCostumer(@RequestBody Costumer c) {
         for (Costumer costumer : costumers) {
             if (costumer.getId() == c.getId()) {
-                c.setName(costumer.getName());
-                c.setUsername(costumer.getUsername());
-                c.setPassword(costumer.getPassword());
+                c.setName(c.getName());
+                c.setUsername(c.getUsername());
+                c.setPassword(c.getPassword());
 
                 return costumer;
             }
         }
         return null;
     }
-
 
     /**
      * 1. **@RestController**: Esta anotación indica que la clase es un controlador RESTful. Un controlador RESTful es una clase que contiene
