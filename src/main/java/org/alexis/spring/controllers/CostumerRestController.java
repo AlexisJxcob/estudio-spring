@@ -37,7 +37,8 @@ public class CostumerRestController {
         return c;
     }
 
-    public Costumer putCostumer(Costumer c) {
+    @PutMapping("/clientes")
+    public Costumer putCostumer(@RequestBody Costumer c) {
         for (Costumer costumer : costumers) {
             if (costumer.getId() == c.getId()) {
                 c.setName(costumer.getName());
@@ -50,4 +51,35 @@ public class CostumerRestController {
         return null;
     }
 
+
+    /**
+     * 1. **@RestController**: Esta anotación indica que la clase es un controlador RESTful. Un controlador RESTful es una clase que contiene
+     * métodos HTTP (GET, POST, PUT, DELETE) para manejar solicitudes y respuestas de un servicio web.
+     *
+     * 2. **GetMapping**: Esta anotación indica que el método es una solicitud GET. El método `getCostumers()` en tu código es un ejemplo de
+     * cómo usar esta anotación.
+     *
+     * 3. **PathVariable**: Esta anotación se utiliza para indicar que un parámetro de la URL debe ser pasado como argumento al método. En tu
+     * código, el método `getCliente(@PathVariable String username)` recibe un parámetro llamado `username` y lo usa para buscar un cliente en
+     * la lista.
+     *
+     * 4. **PostMapping**: Esta anotación indica que el método es una solicitud POST. El método `postCostumer(@RequestBody Costumer c)` recibe
+     * un objeto JSON como cuerpo de la solicitud y lo utiliza para crear un nuevo cliente en la lista.
+     *
+     * 5. **Put**: Esta anotación se utiliza para indicar que el método es una solicitud PUT. El método `putCostumer(@PathVariable String
+     * username, @RequestBody Costumer c)` recibe un parámetro llamado `username` y otro objeto JSON como cuerpo de la solicitud y lo usa para
+     * actualizar un cliente en la lista.
+     *
+     * 6. **@RequestBody**: Esta anotación se utiliza para indicar que el cuerpo de la solicitud debe ser procesado como un objeto JSON. En tu
+     * código, el método `postCostumer(@RequestBody Costumer c)` recibe un objeto JSON como cuerpo de la solicitud y lo usa para crear un
+     * nuevo cliente en la lista.
+     *
+     * 7. **@PathVariable**: Esta anotación se utiliza para indicar que un parámetro de la URL debe ser pasado como argumento al método. En tu
+     * código, el método `getCliente(@PathVariable String username)` recibe un parámetro llamado `username` y lo usa para buscar un cliente en
+     * la lista.
+     *
+     * 8. **@RequestBody**: Esta anotación se utiliza para indicar que el cuerpo de la solicitud debe ser procesado como un objeto JSON. En tu
+     * código, el método `postCostumer(@RequestBody Costumer c)` recibe un objeto JSON como cuerpo de la solicitud y lo usa para crear un
+     * nuevo cliente en la lista.
+     */
 }
