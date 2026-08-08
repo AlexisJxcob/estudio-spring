@@ -8,6 +8,8 @@ public class Costumer {
     private String username;
     private String password;
 
+
+
     // Constructor
     public Costumer(Integer id, String name, String username, String password) {
         this.id = id;
@@ -15,6 +17,7 @@ public class Costumer {
         this.username = username;
         this.password = password;
     }
+
 
 
     public Integer getId() {

@@ -22,4 +22,13 @@ public class CostumerRestController {
         return costumers;
     }
 
+
+    public Costumer getCliente(String username) {
+        for (Costumer c : costumers) {
+            if (c.getUsername().equals(username)) {
+                return c;
+            }
+        }
+        return null; // mala practica
+    }
 }
