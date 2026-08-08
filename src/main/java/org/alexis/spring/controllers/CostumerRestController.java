@@ -1,9 +1,7 @@
 package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Costumer;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +21,7 @@ public class CostumerRestController {
         return costumers;
     }
 
-@GetMapping("clientes/{username}")
+@GetMapping("/clientes/{username}")
     public Costumer getCliente(@PathVariable String username) {
         for (Costumer c : costumers) {
             if (c.getUsername().equals(username)) {
@@ -32,4 +30,11 @@ public class CostumerRestController {
         }
         return null; // mala practica
     }
+
+    @PostMapping("/clientes")
+    public Costumer postCostumer(@RequestBody Costumer c) {
+        costumers.add(c);
+        return c;
+    }
+
 }
