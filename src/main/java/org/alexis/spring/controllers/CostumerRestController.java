@@ -65,7 +65,8 @@ public class CostumerRestController {
         return null;
     }
 
-    public Costumer patchCostumer (Costumer costumer) {
+    @PatchMapping("/clientes")
+    public Costumer patchCostumer (@RequestBody Costumer costumer) {
         for (Costumer c : costumers) {
             if (c.getId().equals(costumer.getId())) {
                 if (costumer.getName() != null) {
