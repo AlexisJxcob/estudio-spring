@@ -54,7 +54,8 @@ public class CostumerRestController {
         return null;
     }
 
-    public Costumer deleteCostumer(int id) {
+    @DeleteMapping("/clientes/{id}")
+    public Costumer deleteCostumer(@PathVariable int id) {
         for (Costumer c : costumers) {
             if (c.getId().equals(id)) {
                 costumers.remove(c);
@@ -63,6 +64,25 @@ public class CostumerRestController {
         }
         return null;
     }
+
+    public Costumer patchCostumer (Costumer costumer) {
+        for (Costumer c : costumers) {
+            if (c.getId().equals(costumer.getId())) {
+                if (costumer.getName() != null) {
+                    c.setName(costumer.getName());
+                }
+                if (costumer.getUsername() != null) {
+                    c.setUsername(costumer.getUsername());
+                }
+                if (costumer.getPassword() != null) {
+                    c.setPassword(costumer.getPassword());
+                }
+                return c;
+            }
+        }
+        return null;
+    }
+
 }
 
 
