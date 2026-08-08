@@ -66,20 +66,12 @@ public class CostumerRestController {
      * 4. **PostMapping**: Esta anotación indica que el método es una solicitud POST. El método `postCostumer(@RequestBody Costumer c)` recibe
      * un objeto JSON como cuerpo de la solicitud y lo utiliza para crear un nuevo cliente en la lista.
      *
-     * 5. **Put**: Esta anotación se utiliza para indicar que el método es una solicitud PUT. El método `putCostumer(@PathVariable String
+     * 5. **PutMapping**: Esta anotación se utiliza para indicar que el método es una solicitud PUT. El método `putCostumer(@PathVariable String
      * username, @RequestBody Costumer c)` recibe un parámetro llamado `username` y otro objeto JSON como cuerpo de la solicitud y lo usa para
      * actualizar un cliente en la lista.
      *
      * 6. **@RequestBody**: Esta anotación se utiliza para indicar que el cuerpo de la solicitud debe ser procesado como un objeto JSON. En tu
      * código, el método `postCostumer(@RequestBody Costumer c)` recibe un objeto JSON como cuerpo de la solicitud y lo usa para crear un
      * nuevo cliente en la lista.
-     *
-     * 7. **@PathVariable**: Esta anotación se utiliza para indicar que un parámetro de la URL debe ser pasado como argumento al método. En tu
-     * código, el método `getCliente(@PathVariable String username)` recibe un parámetro llamado `username` y lo usa para buscar un cliente en
-     * la lista.
-     *
-     * 8. **@RequestBody**: Esta anotación se utiliza para indicar que el cuerpo de la solicitud debe ser procesado como un objeto JSON. En tu
-     * código, el método `postCostumer(@RequestBody Costumer c)` recibe un objeto JSON como cuerpo de la solicitud y lo usa para crear un
-     * nuevo cliente en la lista.
-     */
+     **/
 }
