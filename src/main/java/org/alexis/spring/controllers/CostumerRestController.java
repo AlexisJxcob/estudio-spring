@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@RequestMapping("/clientes") // unificacion de ruta
 public class CostumerRestController {
     private List<Costumer> costumers = new ArrayList<>(Arrays.asList(
             new Costumer(1, "fernando", "alexis", "secreto123"),
@@ -16,12 +17,12 @@ public class CostumerRestController {
             new Costumer(4, "seporah", "avi", "secreto123")
     ));
 
-    @GetMapping("/clientes")
+    @GetMapping()
     public List<Costumer> getCostumers() {
         return costumers;
     }
 
-@GetMapping("/clientes/{username}")
+@GetMapping("/{username}")
     public Costumer getCliente(@PathVariable String username) {
         for (Costumer c : costumers) {
             if (c.getUsername().equals(username)) {
@@ -31,13 +32,13 @@ public class CostumerRestController {
         return null; // mala practica
     }
 
-    @PostMapping("/clientes")
+    @PostMapping()
     public Costumer postCostumer(@RequestBody Costumer c) {
         costumers.add(c);
         return c;
     }
 
-    @PutMapping("/clientes")
+    @PutMapping()
     public Costumer putCostumer(@RequestBody Costumer c) {
         System.out.println("ID recibido: " + c.getId()); // Verifica que el ID no llegue en null
 
@@ -54,7 +55,7 @@ public class CostumerRestController {
         return null;
     }
 
-    @DeleteMapping("/clientes/{id}")
+    @DeleteMapping("/{id}")
     public Costumer deleteCostumer(@PathVariable int id) {
         for (Costumer c : costumers) {
             if (c.getId().equals(id)) {
@@ -65,7 +66,7 @@ public class CostumerRestController {
         return null;
     }
 
-    @PatchMapping("/clientes")
+    @PatchMapping()
     public Costumer patchCostumer (@RequestBody Costumer costumer) {
         for (Costumer c : costumers) {
             if (c.getId().equals(costumer.getId())) {
