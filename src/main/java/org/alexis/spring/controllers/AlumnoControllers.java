@@ -2,6 +2,7 @@ package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Alumno;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,5 +31,13 @@ public class AlumnoControllers {
         return alumnos;
     }
 
-
+@GetMapping("/{id}")
+    public Alumno getAlumno(@PathVariable int id) {
+        for (Alumno a : alumnos) {
+            if (a.getId().equals(id)) {
+                return a;
+            }
+        }
+        return null;
+    }
 }
