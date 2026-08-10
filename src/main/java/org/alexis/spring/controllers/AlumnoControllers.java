@@ -70,4 +70,26 @@ public class AlumnoControllers {
         }
         return null;
         }
+
+    @PatchMapping
+    public Alumno patchAlumno(@RequestBody Alumno alumno) {
+        for (Alumno a : alumnos) {
+            if (a.getId().equals(alumno.getId())) {
+                if (a.getNombre() != null) {
+                    a.setNombre(alumno.getNombre());
+                }
+                if (a.getApellido() != null) {
+                    a.setApellido(alumno.getApellido());
+                }
+                if (a.getEmail() != null) {
+                    a.setEmail(alumno.getEmail());
+                }
+                if (a.getEdad() != null) {
+                    a.setEdad(alumno.getEdad());
+                }
+            }
+        }
+        return null;
     }
+    }
+
