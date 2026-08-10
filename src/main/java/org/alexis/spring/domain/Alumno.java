@@ -5,12 +5,14 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private String email;
+    private Integer edad;
 
-    public Alumno(Integer id, String nombre, String apellido, String email) {
+    public Alumno(Integer id, String nombre, String apellido, String email, Integer edad) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+        this.edad = edad;
     }
 
     public Integer getId() {
@@ -43,5 +45,13 @@ public class Alumno {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
     }
 }
