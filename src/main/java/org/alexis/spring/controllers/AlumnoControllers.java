@@ -43,4 +43,24 @@ public class AlumnoControllers {
         alumnos.add(alumno);
         return alumno;
     }
+
+    @PutMapping
+    public Alumno updateAlumno(@RequestBody Alumno alumno) {
+        for (Alumno a : alumnos) {
+            if (a.getId().equals(alumno.getId())) {
+                a.setNombre(alumno.getNombre());
+                a.setApellido(alumno.getApellido());
+                a.setEmail(alumno.getEmail());
+                a.setEdad(alumno.getEdad());
+                return a;
+            }
+        }
+        return null;
+    }
+
+    @DeleteMapping
+    public Alumno deleteAlumno(@RequestBody Alumno alumno) {
+        alumnos.remove(alumno);
+        return alumno;
+    }
 }
