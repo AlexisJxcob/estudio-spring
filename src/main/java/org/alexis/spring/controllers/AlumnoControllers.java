@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/alumnos")
 public class AlumnoControllers {
-    List<Alumno> alumnos = new ArrayList<>(Arrays.asList(
+    private List<Alumno> alumnos = new ArrayList<>(Arrays.asList(
             new Alumno(1, "Fernando", "Jacob", "ferjacobka@jijiju.com", 18),
             new Alumno(2, "Camila", "Silva", "csilva@gmail.com", 21),
             new Alumno(3, "Mateo", "González", "mgonzalez@hotmail.com", 10),
@@ -23,15 +23,15 @@ public class AlumnoControllers {
             new Alumno(10, "Martina", "Espinoza", "mespinoza@yahoo.com", 77)
     ));
 
-    // mostrar todos los alumnos
+    // Mostrar todos los alumnos
     @GetMapping
     public List<Alumno> getAlumnos() {
         return alumnos;
     }
 
-    // mostrar un alumno por id
-@GetMapping("/{id}")
-    public Alumno getAlumno(@PathVariable int id) {
+    // Mostrar un alumno por ID
+    @GetMapping("/{id}")
+    public Alumno getAlumno(@PathVariable Integer id) {
         for (Alumno a : alumnos) {
             if (a.getId().equals(id)) {
                 return a;
@@ -40,13 +40,14 @@ public class AlumnoControllers {
         return null;
     }
 
-
+    // Crear un alumno
     @PostMapping
-    public  Alumno createAlumno(@RequestBody Alumno alumno) {
+    public Alumno createAlumno(@RequestBody Alumno alumno) {
         alumnos.add(alumno);
         return alumno;
     }
 
+    // Actualización completa (PUT)
     @PutMapping
     public Alumno updateAlumno(@RequestBody Alumno alumno) {
         for (Alumno a : alumnos) {
@@ -61,35 +62,38 @@ public class AlumnoControllers {
         return null;
     }
 
+    // Eliminar un alumno (DELETE)
     @DeleteMapping("/{id}")
-    public Alumno deleteAlumno(@PathVariable int id) {
+    public Alumno deleteAlumno(@PathVariable Integer id) {
         for (Alumno a : alumnos) {
             if (a.getId().equals(id)) {
                 alumnos.remove(a);
+                return a; // Retornamos el objeto eliminado
             }
         }
         return null;
-        }
+    }
 
+    // Actualización parcial (PATCH)
     @PatchMapping
     public Alumno patchAlumno(@RequestBody Alumno alumno) {
         for (Alumno a : alumnos) {
             if (a.getId().equals(alumno.getId())) {
-                if (a.getNombre() != null) {
+                if (alumno.getNombre() != null) {
                     a.setNombre(alumno.getNombre());
                 }
-                if (a.getApellido() != null) {
+                if (alumno.getApellido() != null) {
                     a.setApellido(alumno.getApellido());
                 }
-                if (a.getEmail() != null) {
+                if (alumno.getEmail() != null) {
                     a.setEmail(alumno.getEmail());
                 }
-                if (a.getEdad() != null) {
+                if (alumno.getEdad() != null) {
                     a.setEdad(alumno.getEdad());
                 }
+                return a; // Retornamos el alumno actualizado
             }
         }
         return null;
     }
-    }
-
+}
