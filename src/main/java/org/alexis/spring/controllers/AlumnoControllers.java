@@ -23,11 +23,13 @@ public class AlumnoControllers {
             new Alumno(10, "Martina", "Espinoza", "mespinoza@yahoo.com", 77)
     ));
 
+    // mostrar todos los alumnos
     @GetMapping
     public List<Alumno> getAlumnos() {
         return alumnos;
     }
 
+    // mostrar un alumno por id
 @GetMapping("/{id}")
     public Alumno getAlumno(@PathVariable int id) {
         for (Alumno a : alumnos) {
@@ -37,6 +39,7 @@ public class AlumnoControllers {
         }
         return null;
     }
+
 
     @PostMapping
     public  Alumno createAlumno(@RequestBody Alumno alumno) {
@@ -58,9 +61,13 @@ public class AlumnoControllers {
         return null;
     }
 
-    @DeleteMapping
-    public Alumno deleteAlumno(@RequestBody Alumno alumno) {
-        alumnos.remove(alumno);
-        return alumno;
+    @DeleteMapping("/{id}")
+    public Alumno deleteAlumno(@PathVariable int id) {
+        for (Alumno a : alumnos) {
+            if (a.getId().equals(id)) {
+                alumnos.remove(a);
+            }
+        }
+        return null;
+        }
     }
-}
