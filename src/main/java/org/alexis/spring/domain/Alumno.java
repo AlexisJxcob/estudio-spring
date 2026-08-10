@@ -1,12 +1,12 @@
 package org.alexis.spring.domain;
 
-public class Alumnos {
+public class Alumno {
     private Integer id;
     private String nombre;
     private String apellido;
     private String email;
 
-    public Alumnos(Integer id, String nombre, String apellido, String email) {
+    public Alumno(Integer id, String nombre, String apellido, String email) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
