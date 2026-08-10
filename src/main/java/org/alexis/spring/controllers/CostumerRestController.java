@@ -22,7 +22,7 @@ public class CostumerRestController {
         return costumers;
     }
 
-@GetMapping("/{username}")
+    @GetMapping("/{username}")
     public Costumer getCliente(@PathVariable String username) {
         for (Costumer c : costumers) {
             if (c.getUsername().equals(username)) {
@@ -87,26 +87,70 @@ public class CostumerRestController {
 
 }
 
-
 /**
- * 1. **@RestController**: Esta anotación indica que la clase es un controlador RESTful. Un controlador RESTful es una clase que contiene
- * métodos HTTP (GET, POST, PUT, DELETE) para manejar solicitudes y respuestas de un servicio web.
+ * =========================================================================================
+ * 📚 GUÍA CONCEPTUAL Y TEÓRICA DEL CÓDIGO
+ * =========================================================================================
  *
- * 2. **GetMapping**: Esta anotación indica que el método es una solicitud GET. El método `getCostumers()` en tu código es un ejemplo de
- * cómo usar esta anotación.
+ * Para entender este código imagina un servicio de mensajería o un restaurante:
+ * - El "Cliente" (Navegador o App) envía una carta/petición.
+ * - Tu "Controlador" (esta clase en Java) lee la carta, busca los datos y devuelve una respuesta.
  *
- * 3. **PathVariable**: Esta anotación se utiliza para indicar que un parámetro de la URL debe ser pasado como argumento al método. En tu
- * código, el método `getCliente(@PathVariable String username)` recibe un parámetro llamado `username` y lo usa para buscar un cliente en
- * la lista.
+ * -----------------------------------------------------------------------------------------
+ * 🌐 MÉTODOS HTTP (¿Qué acción quiere realizar el cliente?)
+ * -----------------------------------------------------------------------------------------
  *
- * 4. **PostMapping**: Esta anotación indica que el método es una solicitud POST. El método `postCostumer(@RequestBody Costumer c)` recibe
- * un objeto JSON como cuerpo de la solicitud y lo utiliza para crear un nuevo cliente en la lista.
+ * 1. GET (Consultar): Se usa para solicitar o leer información sin alterar nada en el sistema.
+ *    -> Ejemplo: Pedir la lista de clientes o consultar los datos de un cliente específico.
  *
- * 5. **PutMapping**: Esta anotación se utiliza para indicar que el método es una solicitud PUT. El método `putCostumer(@PathVariable String
- * username, @RequestBody Costumer c)` recibe un parámetro llamado `username` y otro objeto JSON como cuerpo de la solicitud y lo usa para
- * actualizar un cliente en la lista.
+ * 2. POST (Crear): Se utiliza para enviar datos nuevos y guardarlos en el sistema.
+ *    -> Ejemplo: Registrar un cliente nuevo en la lista.
  *
- * 6. **@RequestBody**: Esta anotación se utiliza para indicar que el cuerpo de la solicitud debe ser procesado como un objeto JSON. En tu
- * código, el método `postCostumer(@RequestBody Costumer c)` recibe un objeto JSON como cuerpo de la solicitud y lo usa para crear un
- * nuevo cliente en la lista.
+ * 3. PUT (Reemplazar/Actualizar completo): Se usa para modificar un registro existente reescribiendo
+ *    todos sus datos con la nueva información enviada.
+ *    -> Ejemplo: Sobrescribir todos los datos del cliente ID 1 (nombre, usuario y contraseña).
+ *
+ * 4. PATCH (Modificar parcialmente): Se usa para cambiar únicamente algunos campos específicos sin
+ *    tocar los demás.
+ *    -> Ejemplo: Cambiar solo la contraseña de un cliente manteniendo su nombre y usuario intactos.
+ *
+ * 5. DELETE (Eliminar): Se utiliza para remover o borrar un registro existente del sistema.
+ *    -> Ejemplo: Eliminar al cliente con ID 2.
+ *
+ * -----------------------------------------------------------------------------------------
+ * 🏷️ ANOTACIONES DE SPRING FRAMEWORK (Instrucciones para el servidor)
+ * -----------------------------------------------------------------------------------------
+ *
+ * --- Configuración General de la Clase ---
+ *
+ * • @RestController: Le avisa a Spring que esta clase procesará peticiones web y responderá
+ *   directamente con datos (por lo general en formato JSON), en lugar de responder con una página web HTML.
+ *
+ * • @RequestMapping("/clientes"): Define la "dirección base" de la web. Todas las funciones de
+ *   esta clase se activarán únicamente si la ruta empieza con "/clientes".
+ *
+ * --- Mapeo de Métodos HTTP a Funciones de Java ---
+ *
+ * • @GetMapping: Conecta las peticiones HTTP GET a un método.
+ *   - `@GetMapping()` responde a la ruta base `/clientes`.
+ *   - `@GetMapping("/{username}")` responde a `/clientes/unNombreDeUsuario`.
+ *
+ * • @PostMapping: Conecta las peticiones HTTP POST a un método para crear registros.
+ *
+ * • @PutMapping: Conecta las peticiones HTTP PUT para actualizaciones completas de información.
+ *
+ * • @PatchMapping: Conecta las peticiones HTTP PATCH para cambios o retoques parciales.
+ *
+ * • @DeleteMapping("/{id}"): Conecta las peticiones HTTP DELETE para borrar registros según el ID.
+ *
+ * --- Recepción y Lectura de Datos ---
+ *
+ * • @PathVariable: Extrae un dato directamente desde la dirección URL y se lo entrega al método.
+ *   - Ejemplo: En la ruta `/clientes/fernando`, la anotación captura `"fernando"` y lo guarda en la
+ *     variable `String username`.
+ *
+ * • @RequestBody: Toma los datos enviados dentro del "cuerpo" de la petición (un objeto JSON enviado
+ *   por el cliente) y los transforma automáticamente en un objeto Java manipulable (en este caso, `Costumer`).
+ *
+ * =========================================================================================
  **/
