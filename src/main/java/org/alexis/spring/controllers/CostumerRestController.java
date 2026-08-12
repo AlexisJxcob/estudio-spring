@@ -1,6 +1,7 @@
 package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Costumer;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class CostumerRestController {
     ));
 
     @GetMapping()
-    public List<Costumer> getCostumers() {
-        return costumers;
+    public ResponseEntity<List<Costumer>> getCostumers() {
+        return ResponseEntity.ok(costumers);
     }
 
     @GetMapping("/{username}")
