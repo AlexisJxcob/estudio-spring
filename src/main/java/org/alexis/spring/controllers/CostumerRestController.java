@@ -36,13 +36,13 @@ public class CostumerRestController {
     }
 
     @PostMapping()
-    public Costumer postCostumer(@RequestBody Costumer c) {
+    public ResponseEntity<?> postCostumer(@RequestBody Costumer c) {
         costumers.add(c);
         return ResponseEntity.status(HttpStatus.CREATED).body("CLIENTE CREADO CORRECTAMENTE: " + c.getUsername()); // devuelve el objeto creado con status code 201
     }
 
     @PutMapping()
-    public Costumer putCostumer(@RequestBody Costumer c) {
+    public ResponseEntity<?> putCostumer(@RequestBody Costumer c) {
         System.out.println("ID recibido: " + c.getId()); // Verifica que el ID no llegue en null
 
         for (Costumer costumer : costumers) {
@@ -51,7 +51,9 @@ public class CostumerRestController {
                 costumer.setName(c.getName());
                 costumer.setUsername(c.getUsername());
                 costumer.setPassword(c.getPassword());
-                return costumer;
+
+                return ResponseEntity.ok("Cliente actualizado correctamente: " + costumer.getUsername());
+                //return costumer;
             }
         }
         System.out.println("No se encontró ningún cliente con ese ID.");
