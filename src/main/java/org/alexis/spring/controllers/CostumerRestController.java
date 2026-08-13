@@ -1,6 +1,8 @@
 package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Costumer;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,19 +26,19 @@ public class CostumerRestController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<Costumer> getCliente(@PathVariable String username) {
+    public ResponseEntity<?> getCliente(@PathVariable String username) {
         for (Costumer c : costumers) {
             if (c.getUsername().equals(username)) {
                 return ResponseEntity.ok(c);
             }
         }
-        return ResponseEntity.notFound().build(); // mala practica
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CLIENTE NO ENCONTRADO CON EL USERNAME: " + username); // mejoran la mala practica de retornar null, devolviendo un status code 404
     }
 
     @PostMapping()
     public Costumer postCostumer(@RequestBody Costumer c) {
         costumers.add(c);
-        return c;
+        return ResponseEntity.status(HttpStatus.CREATED).body("CLIENTE CREADO CORRECTAMENTE: " + c.getUsername()); // devuelve el objeto creado con status code 201
     }
 
     @PutMapping()
