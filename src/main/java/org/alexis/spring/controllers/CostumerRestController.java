@@ -53,13 +53,13 @@ public class CostumerRestController {
                 costumer.setUsername(c.getUsername());
                 costumer.setPassword(c.getPassword());
 
-                return ResponseEntity.ok("Cliente actualizado correctamente: " + costumer.getUsername());
+                return ResponseEntity.noContent().build(); // Devuelve un status code 204 sin cuerpo de respuesta
                 //return costumer;
             }
         }
         System.out.println("No se encontró ningún cliente con ese ID.");
         //return null;
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CLIENTE NO ENCONTRADO CON EL ID: " + c.getId());
+        return ResponseEntity.notFound().build(); // Devuelve un status code 204 sin cuerpo de respuesta
     }
 
     @DeleteMapping("/{id}")
@@ -67,12 +67,10 @@ public class CostumerRestController {
         for (Costumer c : costumers) {
             if (c.getId().equals(id)) {
                 costumers.remove(c);
-                return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                        .body("CLIENTE ELIMINADO CORRECTAMENTE: " + id);
+                return ResponseEntity.noContent().build(); // Devuelve un status code 204 sin cuerpo de respuesta
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body("CLIENTE NO ENCONTRADO CON EL ID: " + id);
+        return ResponseEntity.notFound().build(); // Devuelve un status code 404 sin cuerpo de respuesta
     }
 
     @PatchMapping()
@@ -88,7 +86,7 @@ public class CostumerRestController {
                 if (costumer.getPassword() != null) {
                     c.setPassword(costumer.getPassword());
                 }
-                return ResponseEntity.ok("Cliente actualizado parcialmente correctamente: " + c.getUsername());
+                return ResponseEntity.ok("Cliente actualizado parcialmente correctamente: " + c.getId());
             }
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
