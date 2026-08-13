@@ -57,7 +57,8 @@ public class CostumerRestController {
             }
         }
         System.out.println("No se encontró ningún cliente con ese ID.");
-        return null;
+        //return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("CLIENTE NO ENCONTRADO CON EL ID: " + c.getId());
     }
 
     @DeleteMapping("/{id}")
