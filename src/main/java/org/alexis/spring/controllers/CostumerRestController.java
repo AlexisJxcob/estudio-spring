@@ -2,7 +2,6 @@ package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Costumer;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,7 +76,7 @@ public class CostumerRestController {
     }
 
     @PatchMapping()
-    public Costumer patchCostumer(@RequestBody Costumer costumer) {
+    public ResponseEntity<?> patchCostumer(@RequestBody Costumer costumer) {
         for (Costumer c : costumers) {
             if (c.getId().equals(costumer.getId())) {
                 if (costumer.getName() != null) {
@@ -89,10 +88,11 @@ public class CostumerRestController {
                 if (costumer.getPassword() != null) {
                     c.setPassword(costumer.getPassword());
                 }
-                return c;
+                return ResponseEntity.ok("Cliente actualizado parcialmente correctamente: " + c.getUsername());
             }
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("CLIENTE NO ENCONTRADO CON EL ID: " + costumer.getId());
     }
 
 }
