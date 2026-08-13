@@ -47,7 +47,8 @@ public class CostumerRestController {
                 .buildAndExpand(c.getUsername())
                 .toUri();
 
-        return ResponseEntity.created(Location).build();
+        // return ResponseEntity.created(Location).build();
+        return ResponseEntity.created(Location).body(c);
     }
 
     @PutMapping()
