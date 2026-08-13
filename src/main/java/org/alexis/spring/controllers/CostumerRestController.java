@@ -4,7 +4,9 @@ import org.alexis.spring.domain.Costumer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,8 +40,14 @@ public class CostumerRestController {
     @PostMapping()
     public ResponseEntity<?> postCostumer(@RequestBody Costumer c) {
         costumers.add(c);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("CLIENTE CREADO CORRECTAMENTE: " + c.getUsername()); // devuelve el objeto creado con status code 201
+
+        URI Location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{username}")
+                .buildAndExpand(c.getUsername())
+                .toUri();
+
+        return ResponseEntity.created(Location).build();
     }
 
     @PutMapping()
