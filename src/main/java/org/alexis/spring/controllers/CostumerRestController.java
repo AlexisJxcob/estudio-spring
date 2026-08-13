@@ -24,13 +24,13 @@ public class CostumerRestController {
     }
 
     @GetMapping("/{username}")
-    public Costumer getCliente(@PathVariable String username) {
+    public ResponseEntity<Costumer> getCliente(@PathVariable String username) {
         for (Costumer c : costumers) {
             if (c.getUsername().equals(username)) {
-                return c;
+                return ResponseEntity.ok(c);
             }
         }
-        return null; // mala practica
+        return ResponseEntity.notFound().build(); // mala practica
     }
 
     @PostMapping()
