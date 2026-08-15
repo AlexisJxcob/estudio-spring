@@ -2,14 +2,14 @@ package org.alexis.spring.domain;
 
 public class Product {
     private Integer id;
-    private String nombreProducto;
+    private String nameProduct;
     private Double price;
     private Integer stock;
 
 
-    public Product(Integer id, String nombreProducto, Double price, Integer stock) {
+    public Product(Integer id, String nameProduct, Double price, Integer stock) {
         this.id = id;
-        this.nombreProducto = nombreProducto;
+        this.nameProduct = nameProduct;
         this.price = price;
         this.stock = stock;
     }
@@ -22,12 +22,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getNombreProducto() {
-        return nombreProducto;
+    public String getNameProduct() {
+        return nameProduct;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
     }
 
     public Double getPrice() {
