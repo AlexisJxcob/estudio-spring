@@ -13,4 +13,8 @@ List<Product> products = new ArrayList<>(Arrays.asList(
         new Product(2, "Smartphone", 800.0, 20),
         new Product(3, "Tablet", 400.0, 15),
         new Product(4, "Monitor", 300.0, 5)));
+
+public List<Product> getProducts() {
+    return products;
+}
 }
