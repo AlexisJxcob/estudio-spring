@@ -1,7 +1,10 @@
 package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Product;
+import org.alexis.spring.services.ProductService
+        ;
 import org.alexis.spring.services.ProductServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +16,11 @@ import java.util.List;
 @RequestMapping("/productos") // todos los endpoints piden esto adelante por si tenemos distintos controladores
 public class ProductController {
 
-    ProductServiceImpl productService = new ProductServiceImpl();
+    // instancia de clase
+    // ProductService productService = new ProductServiceImpl(); // polimorfismo dinamico
+    @Autowired
+    private ProductService productService; // inyeccion de dependencias, Spring se encarga de crear la instancia y pasarla al controlador
+
 
     @GetMapping("/listado")
     public ResponseEntity<?> getProducts() {

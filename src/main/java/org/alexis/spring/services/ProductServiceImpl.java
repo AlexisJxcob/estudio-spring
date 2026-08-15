@@ -1,11 +1,13 @@
 package org.alexis.spring.services;
 
 import org.alexis.spring.domain.Product;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Service // esta anotacion indica que es un servicio y lo registra en el contenedor de Spring convirtiendolo en un bean, para que pueda ser inyectado en otros componentes
 public class ProductServiceImpl implements ProductService {
 
 List<Product> products = new ArrayList<>(Arrays.asList(
