@@ -1,10 +1,10 @@
 package org.alexis.spring.controllers;
 
 import org.alexis.spring.domain.Product;
-import org.alexis.spring.services.ProductService
-        ;
-import org.alexis.spring.services.ProductServiceImpl;
+import org.alexis.spring.services.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +19,7 @@ public class ProductController {
     // instancia de clase
     // ProductService productService = new ProductServiceImpl(); // polimorfismo dinamico
     @Autowired
+    @Qualifier("jsonResourceService") // para indicar que queremos la implementacion de ProductosServiceJSONImpl, si no se pone, Spring busca la implementacion por defecto, que es ProductServiceImpl
     private ProductService productService; // inyeccion de dependencias, Spring se encarga de crear la instancia y pasarla al controlador
 
 

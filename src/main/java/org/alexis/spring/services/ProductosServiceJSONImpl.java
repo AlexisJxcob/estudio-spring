@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Primary
-@Service
+@Service("jsonResourceService") // esta anotacion indica que es un servicio y lo registra en el contenedor de Spring convirtiendolo en un bean, para que pueda ser inyectado en otros componentes
 public class ProductosServiceJSONImpl implements ProductService {
 
     @Override
