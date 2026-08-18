@@ -19,7 +19,7 @@ public class ProductController {
     // instancia de clase
     // ProductService productService = new ProductServiceImpl(); // polimorfismo dinamico
     @Autowired
-    @Qualifier("jsonResourceService") // para indicar que queremos la implementacion de ProductosServiceJSONImpl, si no se pone, Spring busca la implementacion por defecto, que es ProductServiceImpl
+    // @Qualifier("jsonResourceService") // para indicar que queremos la implementacion de ProductosServiceJSONImpl, si no se pone, Spring busca la implementacion por defecto, que es ProductServiceImpl
     private ProductService productService; // inyeccion de dependencias, Spring se encarga de crear la instancia y pasarla al controlador
 
 
