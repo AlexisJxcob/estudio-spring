@@ -1,5 +1,6 @@
 package org.alexis.spring.controllers;
 
+import org.alexis.spring.configurations.ExternalConfigurations;
 import org.alexis.spring.domain.Product;
 import org.alexis.spring.services.ProductService;
 
@@ -24,9 +25,15 @@ public class ProductController {
     // @Qualifier("jsonResourceService") // para indicar que queremos la implementacion de ProductosServiceJSONImpl, si no se pone, Spring busca la implementacion por defecto, que es ProductServiceImpl
     private ProductService productService; // inyeccion de dependencias, Spring se encarga de crear la instancia y pasarla al controlador
 
+    // inyeccion de dependencias de la clase ExternalConfigurations para poder acceder a las propiedades del archivo application.properties
+    @Autowired
+    private ExternalConfigurations externalConfigurations;
 
     @GetMapping("/listado")
     public ResponseEntity<?> getProducts() {
+
+        System.out.println("External Configurations: " + externalConfigurations.toString());
+
         List<Product> products = productService.getProducts();
         return ResponseEntity.ok(products);
     }

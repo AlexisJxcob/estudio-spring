@@ -53,4 +53,15 @@ public class ExternalConfigurations {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "ExternalConfigurations{" +
+                "name='" + name + '\'' +
+                ", version='" + version + '\'' +
+                ", author='" + author + '\'' +
+                ", language='" + language + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }
