@@ -61,9 +61,9 @@ public class ClienteController {
 
         try {
             clienteService.Delete(id);
-            return ResponseEntity.noContent().build();
+            return ResponseEntity.noContent().build(); // 204
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build(); // 404
         }
     }
 
