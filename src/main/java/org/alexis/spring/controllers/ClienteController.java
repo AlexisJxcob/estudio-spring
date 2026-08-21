@@ -1,14 +1,7 @@
 package org.alexis.spring.controllers;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.alexis.spring.services.ClienteService;
@@ -30,8 +23,11 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> Listar() {
-        return ResponseEntity.ok(clienteService.Listar());
+    public ResponseEntity<Page<Cliente>> Listar(
+            @RequestParam(defaultValue = "0") int pagina,
+            @RequestParam(defaultValue = "2") int tamaño) {
+        Page<Cliente> resultado = clienteService.Listar(pagina, tamaño);
+        return ResponseEntity.ok(resultado);
     }
 
     @GetMapping("/{id}")
@@ -48,7 +44,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> update(@Valid @PathVariable Long id,@Valid @RequestBody Cliente datos) {
+    public ResponseEntity<Cliente> update(@Valid @PathVariable Long id, @Valid @RequestBody Cliente datos) {
         try {
             Cliente updatedCliente = clienteService.Update(id, datos);
             return ResponseEntity.ok(updatedCliente);
