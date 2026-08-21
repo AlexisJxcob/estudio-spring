@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.alexis.spring.services.ClienteService;
 import org.alexis.spring.entity.Cliente;
+import org.springframework.data.domain.Page;
 
 import java.net.URI;
 import java.util.List;

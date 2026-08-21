@@ -4,6 +4,11 @@ import org.alexis.spring.entity.Cliente;
 import org.alexis.spring.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,8 +20,14 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    public List<Cliente> Listar() {
-        return clienteRepository.findAll();
+    public Page<Cliente> Listar(int pagina, int tamaño) {
+        if (pagina < 0)
+            pagina = 10;
+        if (tamaño < 0)
+            tamaño = 10;
+
+        Pageable pg = PageRequest.of(pagina, tamaño);
+        return clienteRepository.findAll(pg);
     }
 
     public Optional<Cliente> FindById(Long id) {
