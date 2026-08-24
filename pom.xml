@@ -26,7 +26,7 @@
             <dependency>
                 <groupId>com.azure.spring</groupId>
                 <artifactId>spring-cloud-azure-dependencies</artifactId>
-                <version>7.4.0</version>
+                <version>5.18.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -34,14 +34,20 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- Integración con Microsoft Entra ID y OAuth2 Client -->
         <dependency>
             <groupId>com.azure.spring</groupId>
             <artifactId>spring-cloud-azure-starter-active-directory</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+
         <!-- Spring Boot Starters Principales -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,6 +56,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,6 +76,13 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-community-dialects</artifactId>
+        </dependency>
+
+        <!-- Driver para Azure SQL Server -->
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Herramientas de Desarrollo -->
@@ -86,15 +103,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
     </dependencies>
 

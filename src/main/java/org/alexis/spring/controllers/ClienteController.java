@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.alexis.spring.services.ClienteService;
 import org.alexis.spring.entity.Cliente;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
+@PreAuthorize("hasAuthority('APPROLE_Admin')")
 public class ClienteController {
 
     private final ClienteService clienteService;
