@@ -60,4 +60,4 @@ Si quieres añadir o modificar hitos, abre un issue o crea un pull request con t
 
 > Este README es una plantilla inicial para organizar los hitos de estudio. Puedo ajustarlo para incluir fechas, responsables, o integrarlo con GitHub Milestones si lo deseas.
 > 
-> para la rachita
+> para la rachita1
