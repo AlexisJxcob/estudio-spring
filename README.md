@@ -38,6 +38,9 @@ A continuación se muestra una lista de hitos recomendados. Ajusta títulos, des
    - Resultado esperado: Endpoints protegidos, manejo centralizado de excepciones.
    - Recursos: Spring Security guides.
 
+rachita
+
+
 7. Hito 7 — Despliegue y CI/CD
    - Objetivo: Preparar la aplicación para despliegue, crear pipeline básico de CI/CD y Dockerizar la aplicación.
    - Resultado esperado: Imagen Docker y workflow de CI (GitHub Actions) para build y test.
